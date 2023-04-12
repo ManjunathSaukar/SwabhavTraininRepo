@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>This Pointer Solution with bind</h1>
+    <script>
+        function Customer(id, name)
+        {
+            console.log(this);
+            this.customerId = id;
+            this.customerName = name;
+            this.getDetails = function ()
+            {
+                console.log(this);
+                return "id : " + this.customerId + " name : " + this.customerName;
+            }
+        }
+
+        var manjunath = new Customer(101, "Manjunath Saukar");
+        console.log(manjunath.getDetails());
+
+        var getDetails_ptr = manjunath.getDetails; //loses this pointer
+        getDetails_ptr = getDetails_ptr.bind(manjunath)
+        console.log(getDetails_ptr());
+
+        console.log(manjunath.getDetails());
+
+    </script>
+</body>
+
+</html>
