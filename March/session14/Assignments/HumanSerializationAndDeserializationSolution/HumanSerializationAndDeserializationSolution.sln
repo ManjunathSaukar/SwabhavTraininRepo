@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanClassLib", "HumanClassLib\HumanClassLib.csproj", "{23D44BE3-2708-4D86-82EA-2CBC41893860}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanSerializationApp", "HumanSerializationApp\HumanSerializationApp.csproj", "{9D1528AF-C8AE-48AF-BA6A-BC1B2461B635}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanDeserializationApp", "HumanDeserializationApp\HumanDeserializationApp.csproj", "{5F362C71-8C05-4E0D-AA99-34E24C10183D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23D44BE3-2708-4D86-82EA-2CBC41893860}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23D44BE3-2708-4D86-82EA-2CBC41893860}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23D44BE3-2708-4D86-82EA-2CBC41893860}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23D44BE3-2708-4D86-82EA-2CBC41893860}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D1528AF-C8AE-48AF-BA6A-BC1B2461B635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D1528AF-C8AE-48AF-BA6A-BC1B2461B635}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D1528AF-C8AE-48AF-BA6A-BC1B2461B635}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D1528AF-C8AE-48AF-BA6A-BC1B2461B635}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F362C71-8C05-4E0D-AA99-34E24C10183D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F362C71-8C05-4E0D-AA99-34E24C10183D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F362C71-8C05-4E0D-AA99-34E24C10183D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F362C71-8C05-4E0D-AA99-34E24C10183D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CB3CA146-BD63-4C88-8A10-8742A03E76FB}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesListLib", "MoviesListLib\MoviesListLib.csproj", "{11F8A790-8C73-40E1-BEDC-B9BA636663DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieListConsoleApp", "MovieListConsoleApp\MovieListConsoleApp.csproj", "{71EFDFC0-A2D9-40B8-8CB4-9744E2CAACF2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11F8A790-8C73-40E1-BEDC-B9BA636663DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11F8A790-8C73-40E1-BEDC-B9BA636663DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11F8A790-8C73-40E1-BEDC-B9BA636663DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11F8A790-8C73-40E1-BEDC-B9BA636663DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71EFDFC0-A2D9-40B8-8CB4-9744E2CAACF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71EFDFC0-A2D9-40B8-8CB4-9744E2CAACF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71EFDFC0-A2D9-40B8-8CB4-9744E2CAACF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71EFDFC0-A2D9-40B8-8CB4-9744E2CAACF2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {111D52A6-FD98-4A53-BF2E-7ABE8AB7E44E}
+	EndGlobalSection
+EndGlobal

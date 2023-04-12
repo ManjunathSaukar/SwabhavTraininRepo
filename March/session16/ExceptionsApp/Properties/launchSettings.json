@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ExceptionsApp": {
+      "commandName": "Project",
+      "commandLineArgs": "10 5"
+    }
+  }
+}

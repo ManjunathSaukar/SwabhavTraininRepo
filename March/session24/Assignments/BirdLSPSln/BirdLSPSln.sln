@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirdLSPVoilationApp", "BirdLSPVoilationApp\BirdLSPVoilationApp.csproj", "{BF4C85DA-C643-414D-88BF-F525CEC5D7CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirdLSPRefactoredApp", "BirdLSPRefactoredApp\BirdLSPRefactoredApp.csproj", "{F732EDB9-8EA7-4EE7-A5FC-3CDE96ACAA74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF4C85DA-C643-414D-88BF-F525CEC5D7CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF4C85DA-C643-414D-88BF-F525CEC5D7CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF4C85DA-C643-414D-88BF-F525CEC5D7CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF4C85DA-C643-414D-88BF-F525CEC5D7CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F732EDB9-8EA7-4EE7-A5FC-3CDE96ACAA74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F732EDB9-8EA7-4EE7-A5FC-3CDE96ACAA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F732EDB9-8EA7-4EE7-A5FC-3CDE96ACAA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F732EDB9-8EA7-4EE7-A5FC-3CDE96ACAA74}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D1FEDFDA-C5DE-4E5C-A2E4-AC8E5897D768}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,103 @@
+using System;
+
+namespace OddEven
+{
+    class OddEven
+    {
+        public int[] GetEven(int n)
+        {
+            int[] evenNumbers = new int[n / 2];
+            int j = 0;
+            for (int i = 2; i <= n; i += 2)
+            {
+                evenNumbers[j] = i;
+                j++;
+            }
+            return evenNumbers;
+        }
+
+        public int[] GetOdd(int n)
+        {
+            int[] oddNumbers = new int[(n + 1) / 2];
+            int j = 0;
+            for (int i = 1; i <= n; i += 2)
+            {
+                oddNumbers[j] = i;
+                j++;
+            }
+            return oddNumbers;
+        }
+
+        public int[] GetEven(int start, int end)
+        {
+            int range = end - start + 1;
+            int[] evenNumbers = new int[range / 2];
+            int j = 0;
+            for (int i = start; i < end; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    evenNumbers[j] = i;
+                    j++;
+                }   
+            }
+            return evenNumbers;
+        }
+        public int[] GetOdd(int start, int end)
+        {
+            int range = end - start + 1;
+            int[] oddNumbers = new int[(range + 1) / 2];
+            int j = 0;
+            for (int i = start; i <=end && j < oddNumbers.Length; i++)
+            {
+                if (i % 2 != 0)
+                {
+                    oddNumbers[j] = i;
+                    j++;
+                }
+            }
+            return oddNumbers;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            OddEven oddEven = new OddEven();
+
+            // Get even and odd numbers from 1 to 100
+            int[] evenNumbers = oddEven.GetEven(100);
+            Console.WriteLine("Even numbers from 1 to 100:");
+            foreach (int evenNumber in evenNumbers)
+            {
+                Console.Write(evenNumber + " ");
+            }
+            Console.WriteLine();
+
+            int[] oddNumbers = oddEven.GetOdd(100);
+            Console.WriteLine("Odd numbers from 1 to 100:");
+            foreach (int oddNumber in oddNumbers)
+            {
+                Console.Write(oddNumber + " ");
+            }
+            Console.WriteLine();
+
+            // Get even and odd numbers from 100 to 200
+            int[] evenNumbers2 = oddEven.GetEven(100, 200);
+            Console.WriteLine("Even numbers from 100 to 200:");
+            foreach (int evenNumber in evenNumbers2)
+            {
+                Console.Write(evenNumber + " ");
+            }
+            Console.WriteLine();
+
+            int[] oddNumbers2 = oddEven.GetOdd(100, 200);
+            Console.WriteLine("Odd numbers from 100 to 200:");
+            foreach (int oddNumber in oddNumbers2)
+            {
+                Console.Write(oddNumber + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+}
