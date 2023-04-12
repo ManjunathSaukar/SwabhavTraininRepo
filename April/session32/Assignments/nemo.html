@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+    }
+
+    .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        width: 50px;
+        margin: 5px;
+        background-color: #ccc;
+        border-radius: 5px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        cursor: pointer;
+    }
+
+    .green {
+        background-color: green;
+    }
+
+    .red {
+        background-color: red;
+    }
+
+    .rules {
+        background-color: #eee;
+        padding: 20px;
+        margin: 20px;
+        border-radius: 5px;
+        max-width: 400px;
+    }
+</style>
+
+<body>
+    <h1>Nemo Game</h1>
+
+    <div class="rules">
+        <h2>Rules</h2>
+        <ol>
+            <li>There are 50 boxes with numbers, one of which contains a hidden Nemo picture.</li>
+            <li>You have 3 chances to find the Nemo picture.</li>
+            <li>If you click on a box with the Nemo picture, you win!</li>
+            <li>If you click on a box without the Nemo picture, all the boxes to the left of the clicked box will turn
+                green, and all the boxes to the right of the clicked box will turn red, indicating that the Nemo picture
+                is to the left.</li>
+            <li>If you run out of chances without finding the Nemo picture, you lose.</li>
+            <li>Click "Play Again" to reset the game and play again.</li>
+        </ol>
+        <button id="rulesOkBtn">OK</button>
+    </div>
+
+    <div class="container"></div>
+
+    <button id="playAgainBtn" style="display:none">Play Again</button>
+    <script>
+        var boxes = [];
+        var container = document.querySelector(".container");
+        var playAgainBtn = document.querySelector("#playAgainBtn");
+        var rules = document.querySelector(".rules");
+        var rulesOkBtn = document.querySelector("#rulesOkBtn");
+
+        // Hide the rules tab when OK button is clicked
+        rulesOkBtn.addEventListener("click", function ()
+        {
+            rules.style.display = "none";
+        });
+
+        // Generate 50 boxes with numbers and add them to the container
+        for (var i = 1; i <= 50; i++)
+        {
+            var box = document.createElement("div");
+            box.classList.add("box");
+            box.dataset.number = i;
+            box.innerText = i;
+            container.appendChild(box);
+            boxes.push(box);
+        }
+
+        // Generate a random index for the box that will contain the Nemo picture
+        var nemoIndex = Math.floor(Math.random() * boxes.length);
+        var nemoBox = boxes[nemoIndex];
+        nemoBox.dataset.hasNemo = true;
+
+        // Add click event listener to each box
+        var chancesLeft = 3;
+        for (var i = 0; i < boxes.length; i++)
+        {
+            var box = boxes[i];
+            box.addEventListener("click", function ()
+            {
+                if (this.dataset.hasNemo)
+                {
+                    alert("Congratulations! You found Nemo!");
+                    for (var j = 0; j < boxes.length; j++)
+                    {
+                        var box = boxes[j];
+                        box.removeEventListener("click", arguments.callee);
+                    }
+                    playAgainBtn.style.display = "block";
+                } else
+                {
+                    // User did not find the Nemo picture
+                    this.removeEventListener("click", arguments.callee);
+                    chancesLeft--;
+                    if (chancesLeft === 0)
+                    {
+                        // User ran out of chances
+                        alert("Sorry, you ran out of chances. Game over.");
+                        playAgainBtn.style.display = "block";
+                        return;
+                    }
+                    var clickedIndex = boxes.indexOf(this);
+                    for (var j = 0; j < boxes.length; j++)
+                    {
+                        var box = boxes[j];
+                        var boxIndex = boxes.indexOf(box);
+                        if (boxIndex < clickedIndex)
+                        {
+                            box.classList.add("green");
+                        } else
+                        {
+                            box.classList.add("red");
+                        }
+                    }
+                }
+            });
+        }
+        playAgainBtn.addEventListener("click", function ()
+        {
+            for (var i = 0; i < boxes.length; i++)
+            {
+                var box = boxes[i];
+                box.addEventListener("click", arguments.callee);
+                box.classList.remove("green", "red");
+                box.dataset.hasNemo = false;
+            }
+            nemoIndex = Math.floor(Math.random() * boxes.length);
+            nemoBox = boxes[nemoIndex];
+            nemoBox.dataset.hasNemo = true;
+            chancesLeft = 3;
+            playAgainBtn.style.display = "none";
+        });
+    </script>
+</body>
+
+</html>

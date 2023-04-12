@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Hosting</h1>
+
+    <script>
+        f1()
+        function f1()
+        {
+            console.log("Inside F1, function statements...")
+        }
+    </script>
+
+    <script>
+        //f2() function expressions are not hosted
+        var f2 = function ()
+        {
+            console.log("inside f2, function expression...")
+        }
+        f2()
+    </script>
+
+    <script>
+        //variable hoisting
+        "use strict"
+        f3()
+        function f3()
+        {
+            console.log("Inside F3, function statements...")
+            for (var i = 0; i <= 10; i++)
+            {
+                console.log(i)
+            }
+            console.log("after loop i value :" + i)
+        }
+        //console.log("outside function i value is :" + i)
+    </script>
+
+    <script>
+
+    </script>
+</body>
+
+</html>

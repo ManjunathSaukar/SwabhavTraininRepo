@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Slider V1</h1>
+    <input type="range" min="1" max="50" value="5" id="slider">
+    <h1 id="h1Display"></h1>
+    <div id="btnContainer"></div>
+
+    <script>
+        var slider = document.querySelector("#slider")
+        var h1Display = document.querySelector("#h1Display");
+        h1Display.innerHTML = slider.value
+        displayButtons(slider.value)
+        //console.log(slider)
+        slider.addEventListener("change", function ()
+        {
+            //console.log(slider.value)
+            h1Display.innerHTML = slider.value
+            displayButtons(slider.value)
+        });
+        function fnClickHandler(count)
+        {
+            var button = document.querySelector("#button" + count)
+            if (count % 2 == 0)
+            {
+                button.style.backgroundColor = "blue";
+            }
+            else
+            {
+                button.style.backgroundColor = "green";
+            }
+        }
+        displayButtons(5)
+        function displayButtons(btnCount)
+        {
+            var btnContainer = document.querySelector("#btnContainer")
+            var allBtns = "";
+            for (var i = 1; i <= btnCount; i++)
+            {
+                allBtns += `<button id = button${i} onclick = fnClickHandler(${i}) style = background-color:indianred>${i}</button>&nbsp`
+            }
+            btnContainer.innerHTML = allBtns
+        }
+    </script>
+</body>
+
+</html>

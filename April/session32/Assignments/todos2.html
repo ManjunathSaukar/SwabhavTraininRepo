@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>To-do's V2</h1>
+
+    <label for="todoInput">Enter todo item:</label>
+    <input type="text" id="todoInput">
+    <button id="addTodoBtn">Add</button>
+    <button id="displayTodoBtn">Display Todos</button>
+
+    <ul id="todoList"></ul>
+
+    <script>
+        var todos = [];
+
+        var todoInput = document.querySelector("#todoInput");
+        var addTodoBtn = document.querySelector("#addTodoBtn");
+        var displayTodoBtn = document.querySelector("#displayTodoBtn");
+        var todoList = document.querySelector("#todoList");
+
+        addTodoBtn.addEventListener("click", function ()
+        {
+            var todoItem = {
+                description: todoInput.value,
+                createdTime: new Date().toLocaleString(),
+                assignedTo: "Manjunath" 
+            };
+            todos.push(todoItem);
+            todoInput.value = "";
+        });
+
+        displayTodoBtn.addEventListener("click", function ()
+        {
+            todoList.innerHTML = "";
+            for (var i = 0; i < todos.length; i++)
+            {
+                var todoItem = todos[i];
+                var todoListItem = document.createElement("li");
+                todoListItem.innerText = todoItem.description + " - Created Time: " + todoItem.createdTime + " - Assigned To: " + todoItem.assignedTo; // updated display
+                todoList.appendChild(todoListItem);
+            }
+        });
+    </script>
+</body>
+
+</html>

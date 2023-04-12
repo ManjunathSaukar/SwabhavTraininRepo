@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Event Page</h1>
+    <input type="button" id="btnRed" value="red">
+    <input type="button" id="btnBlue" value="blue">
+    <script>
+        var btnRed = document.querySelector("#btnRed")
+        console.log(btnRed)
+        var btnBlue = document.querySelector("#btnBlue")
+        console.log(btnBlue)
+        btnBlue.addEventListener("click", fnCommonHandler)
+        btnRed.addEventListener("click", fnCommonHandler)
+
+        function fnCommonHandler(e)
+        {
+            console.log("Inside Common Handler")
+            console.log(e)
+            // if (e.target.id === "btnRed")
+            // {
+            //     document.body.style.backgroundColor = "red";
+            // } 
+            // else if (e.target.id === "btnBlue")
+            // {
+            //     document.body.style.backgroundColor = "blue";
+            // }
+            console.log(e.target.value)
+            document.body.style.backgroundColor = e.target.value
+
+        }
+    </script>
+</body>
+
+</html>

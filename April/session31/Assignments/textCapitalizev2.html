@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            font-size: 16px;
+            height: auto;
+            padding: 10px;
+            border: 1px solid black;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Text Capitalize V2</h1>
+    <select id="colorSelect" onchange="changeTextColor()">
+        <option value="select">Select text color</option>
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+    </select>
+    <select id="bgColorSelect" onchange="changeBGColor()">
+        <option value="select">Select background color</option>
+        <option value="yellow">Yellow</option>
+        <option value="pink">Pink</option>
+        <option value="lightblue">Light Blue</option>
+    </select>
+    <select id="fontSizeSelect" onchange="changeFontSize()">
+        <option value="select">Select font size</option>
+        <option value="16px">16</option>
+        <option value="20px">20</option>
+        <option value="24px">24</option>
+    </select>
+    <br><br>
+    <input type="text" id="inputBox" placeholder="Enter your text here">
+    <br><br>
+    <div class="box">
+        <p id="outputBox"></p>
+    </div>
+
+    <script>
+        var inputBox = document.querySelector("#inputBox");
+        var outputBox = document.querySelector("#outputBox");
+        var colorSelect = document.querySelector("#colorSelect");
+        var bgColorSelect = document.querySelector("#bgColorSelect");
+        var fontSizeSelect = document.querySelector("#fontSizeSelect");
+
+        function changeTextColor()
+        {
+            var selectedColor = colorSelect.value;
+            if (selectedColor != "select")
+            {
+                outputBox.style.color = selectedColor;
+            } else
+            {
+                outputBox.style.color = "black";
+            }
+        }
+        function changeBGColor()
+        {
+            var selectedColor = bgColorSelect.value;
+            if (selectedColor != "select")
+            {
+                outputBox.style.backgroundColor = selectedColor;
+            } else
+            {
+                outputBox.style.backgroundColor = "white";
+            }
+        }
+        function changeFontSize()
+        {
+            var selectedFontSize = fontSizeSelect.value;
+            if (selectedFontSize != "select")
+            {
+                outputBox.style.fontSize = selectedFontSize;
+            } else
+            {
+                outputBox.style.fontSize = "16px";
+            }
+        }
+        inputBox.addEventListener("keyup", function (e)
+        {
+            outputBox.textContent = e.target.value.toUpperCase();
+            changeTextColor();
+        });
+    </script>
+</body>
+
+</html>

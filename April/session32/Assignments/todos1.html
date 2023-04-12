@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>To-do's V1</h1>
+    <label for="todo-input">Enter Todo:</label>
+    <input type="text" id="todo-input">
+    <button id="add-btn">Add</button>
+    <button id="display-btn">Display Todos</button>
+    <ul id="todo-list"></ul>
+
+    <script>
+        var todos = [];
+        var todoInput = document.getElementById('todo-input');
+        var addBtn = document.getElementById('add-btn');
+        var displayBtn = document.getElementById('display-btn');
+        var todoList = document.getElementById('todo-list');
+
+        addBtn.addEventListener('click', function ()
+        {
+            var todo = todoInput.value;
+            todos.push(todo);
+            todoInput.value = '';
+        });
+
+        displayBtn.addEventListener('click', function ()
+        {
+            var listItems = '';
+            for (var i = 0; i < todos.length; i++)
+            {
+                listItems += '<li>' + todos[i] + '</li>';
+            }
+            todoList.innerHTML = listItems;
+        });
+    </script>
+</body>
+
+</html>

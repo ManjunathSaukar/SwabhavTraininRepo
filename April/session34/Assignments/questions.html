@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Questions</h1>
+    <div id="question-container">
+        <p id="question-number"></p>
+        <p id="question"></p>
+        <label>
+            <input type="radio" name="answer">
+            <span id="option-1"></span>
+        </label>
+        <label>
+            <input type="radio" name="answer">
+            <span id="option-2"></span>
+        </label>
+    </div>
+    <button id="previous-btn" disabled>Previous</button>
+    <button id="next-btn">Next</button>
+    <button id="finish-btn" style="display:none">Finish</button>
+
+    <script>
+        var questions = [
+            {
+                question: "Is delhi capital of India?",
+                options: ["yes", "no"],
+                answer: "yes"
+            },
+            {
+                question: "Is Hyderabad the capital Telangana?",
+                options: ["yes", "no"],
+                answer: "yes"
+            },
+            {
+                question: "Does Sun rise in the west?",
+                options: ["yes", "no"],
+                answer: "no"
+            },
+            {
+                question: "Do we have 7 days a week?",
+                options: ["yes", "no"],
+                answer: "yes"
+            },
+            {
+                question: "Are you enjoying this quiz?",
+                options: ["yes", "no"],
+                answer: ""
+            }
+        ];
+
+        var currentQuestionIndex = 0;
+        var attemptedQuestions = 0;
+
+        var questionNumberEl = document.getElementById("question-number");
+        var questionEl = document.getElementById("question");
+        var option1El = document.getElementById("option-1");
+        var option2El = document.getElementById("option-2");
+        var answerEls = document.getElementsByName("answer");
+        var previousBtn = document.getElementById("previous-btn");
+        var nextBtn = document.getElementById("next-btn");
+        var finishBtn = document.getElementById("finish-btn");
+
+        setQuestionAndOptions();
+
+        previousBtn.addEventListener("click", goToPreviousQuestion);
+        nextBtn.addEventListener("click", goToNextQuestion);
+        finishBtn.addEventListener("click", showSummary);
+
+        function setQuestionAndOptions()
+        {
+            var currentQuestion = questions[currentQuestionIndex];
+            questionNumberEl.textContent = `Question ${currentQuestionIndex + 1}/${questions.length}`;
+            questionEl.textContent = currentQuestion.question;
+            option1El.textContent = currentQuestion.options[0];
+            option2El.textContent = currentQuestion.options[1];
+
+            answerEls[0].checked = false;
+            answerEls[1].checked = false;
+
+            if (currentQuestion.answer)
+            {
+                answerEls.forEach(function (answerEl)
+                {
+                    if (answerEl.nextSibling.textContent === currentQuestion.answer)
+                    {
+                        answerEl.checked = true;
+                    }
+                });
+            }
+            if (currentQuestionIndex === 0)
+            {
+                previousBtn.disabled = true;
+            } else
+            {
+                previousBtn.disabled = false;
+            }
+
+            if (currentQuestionIndex === questions.length - 1)
+            {
+                nextBtn.style.display = "none";
+                finishBtn.style.display = "inline-block";
+            } else
+            {
+                nextBtn.style.display = "inline-block";
+                finishBtn.style.display = "none";
+            }
+        }
+
+        function goToPreviousQuestion()
+        {
+            currentQuestionIndex--;
+
+            setQuestionAndOptions();
+        }
+
+        function goToNextQuestion()
+        {
+            if (answerEls[0].checked || answerEls[1].checked)
+            {
+                attemptedQuestions++;
+
+                var userAnswer;
+                if (answerEls[0].checked)
+                {
+                    userAnswer = option1El.textContent;
+                } else
+                {
+                    userAnswer = option2El.textContent;
+                }
+
+                questions[currentQuestionIndex].answer = userAnswer;
+            }
+
+            currentQuestionIndex++;
+
+            setQuestionAndOptions();
+        }
+
+        function showSummary()
+        {
+            var numCorrectAnswers = 0;
+            questions.forEach(function (question)
+            {
+                if (question.answer === question.options[0])
+                {
+                    numCorrectAnswers++;
+                }
+            });
+
+            var message = `You answered ${numCorrectAnswers} out of ${questions.length} questions correctly.`;
+            alert(message);
+        }
+    </script>
+</body>
+
+</html>

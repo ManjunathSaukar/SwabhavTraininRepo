@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Names Paging</h1>
+    <h1 id="name"></h1>
+    <button id="prev" disabled>Previous</button>
+    <button id="next">Next</button>
+
+    <script>
+        const names = ["Manjunath", "Ekta", "Ravi", "Vikrant", "Shub", "Gautam", "Anekant"];
+
+        names.sort();
+
+        const nameEl = document.getElementById("name");
+        const prevBtn = document.getElementById("prev");
+        const nextBtn = document.getElementById("next");
+
+        let index = 0;
+        nameEl.textContent = names[index];
+
+        prevBtn.addEventListener("click", () =>
+        {
+            index--;
+            nameEl.textContent = names[index];
+            nextBtn.disabled = false;
+            if (index === 0)
+            {
+                prevBtn.disabled = true;
+            }
+        });
+
+        nextBtn.addEventListener("click", () =>
+        {
+            index++;
+            nameEl.textContent = names[index];
+            prevBtn.disabled = false;
+            if (index === names.length - 1)
+            {
+                nextBtn.disabled = true;
+            }
+        });
+    </script>
+</body>
+
+</html>

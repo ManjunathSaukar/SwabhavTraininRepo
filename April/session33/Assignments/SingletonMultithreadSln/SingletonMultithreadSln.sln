@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingletonMultithreadVoilationApp", "SingletonMultithreadVoilationApp\SingletonMultithreadVoilationApp.csproj", "{DB133748-238B-462C-9EC7-4897D2066F8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingletonMultithreadRefactoredApp", "SingletonMultithreadRefactoredApp\SingletonMultithreadRefactoredApp.csproj", "{3FADD1AD-F051-468E-8EAC-640103EA69A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB133748-238B-462C-9EC7-4897D2066F8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB133748-238B-462C-9EC7-4897D2066F8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB133748-238B-462C-9EC7-4897D2066F8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB133748-238B-462C-9EC7-4897D2066F8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FADD1AD-F051-468E-8EAC-640103EA69A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FADD1AD-F051-468E-8EAC-640103EA69A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FADD1AD-F051-468E-8EAC-640103EA69A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FADD1AD-F051-468E-8EAC-640103EA69A2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3A49BFC7-1846-4656-8A52-BA50670F20FE}
+	EndGlobalSection
+EndGlobal

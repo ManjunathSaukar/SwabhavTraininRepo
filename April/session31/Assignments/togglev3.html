@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1>Toggle V3</h1>
+        <button id="btnToggle" onclick="toggleImage()">Hide</button>
+        <img id="imgPicture"
+            src="https://e1.pngegg.com/pngimages/671/678/png-clipart-one-piece-jolly-roger-dock-and-folder-icons-by-luffy-jolly-roger-straw-hat-pirates-logo-thumbnail.png">
+    </div>
+    <script>
+        var imgPic = document.querySelector("#imgPicture")
+        var chkHide = document.querySelector("#chkHide")
+        function toggleImage()
+        {
+            if (imgPic.style.visibility === "hidden")
+            {
+                imgPic.style.visibility = "visible"
+                btnToggle.innerText = "Hide"
+            } else
+            {
+                imgPic.style.visibility = "hidden"
+                btnToggle.innerText = "Show"
+            }
+        }
+    </script>
+</body>
+
+</html>
