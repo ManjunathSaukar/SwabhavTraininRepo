@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>To-do's V1</h1>
+    <label for="todo-input">Enter Todo:</label>
+    <input type="text" id="todo-input">
+    <button id="add-btn">Add</button>
+    <button id="display-btn">Display Todos</button>
+    <ul id="todo-list"></ul>
+
+    <script src="jquery-3.6.4.js"></script>
+
+    <script>
+        var todos = [];
+        var todoInput = $('#todo-input');
+        var addBtn = $('#add-btn');
+        var displayBtn = $('#display-btn');
+        var todoList = $('#todo-list');
+
+        addBtn.click(function ()
+        {
+            var todo = todoInput.val();
+            todos.push(todo);
+            todoInput.val('');
+        });
+
+        displayBtn.click(function ()
+        {
+            var listItems = '';
+            $.each(todos, function (index, todo)
+            {
+                listItems += '<li>' + todo + '</li>';
+            });
+            todoList.html(listItems);
+        });
+    </script>
+</body>
+
+</html>

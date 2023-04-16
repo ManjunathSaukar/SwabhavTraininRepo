@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nemo Game</title>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Nemo Game</h1>
+    <h1 id="displayResult"></h1>
+
+    <div id="rule" style="border: 1px solid white;">
+        <h2 style="text-align: center;">
+            <u>Rule for Nemo Game</u>
+        </h2>
+        <p>1. Nemo is Hiding in one of the 50 boxes, you need to find the correct box.</p>
+        <p>2. All you have to do is to click on the right box.</p>
+        <p>3. If you click on any box and the color of the box will be Green, then Nemo is present in the boxes to the
+            right.</p>
+        <p>4. If you click on any box and the color of the box will be Red, then Nemo is present in the boxes to the
+            left.</p>
+        <p>5. You have only 3 tries to find Nemo. All the best!!!!</p>
+        <br><br><br>
+        <input type="button" id="okBtn" value="Start Game" style="display: block; margin: 0 auto;"><br><br>
+    </div>
+
+    <div id="allBox" style="border: 1px solid white;"></div>
+
+    <div id="playAgain" style="text-align: center; display: none;">
+        <button onclick="window.location.reload();">Play Again</button>
+    </div>
+
+    <script src="jquery-3.6.4.js"></script>
+
+    <script>
+        var okBtn = $("#okBtn");
+        var box = $("#allBox");
+        var rule = $("#rule");
+        var playAgain = $("#playAgain");
+        var randomNumber;
+        var noOfMove = 0;
+        var maxTries = 3;
+
+        okBtn.on("click", function ()
+        {
+            rule.hide();
+            box.css("visibility", "visible");
+            displayBox(50);
+            findRandomNumber(50);
+        });
+
+        function displayBox(noOfBox)
+        {
+            var allBox = "";
+            for (var i = 1; i <= noOfBox; i++)
+            {
+                allBox += `<input type="button" onclick="boxDetail(${i})" id="box${i}" style="width: 60px;height: 40px;background: #d1cccf;margin: 10px;" />`;
+            }
+            box.html(allBox);
+        }
+
+        function findRandomNumber(noOfBox)
+        {
+            randomNumber = Math.floor(Math.random() * (noOfBox - 1 + 1) + 1);
+            console.log(randomNumber);
+        }
+
+        function boxDetail(count)
+        {
+            noOfMove += 1;
+            var box = $("#box" + count);
+            if (count < randomNumber)
+            {
+                box.css("background", "green");
+                setTimeout(function ()
+                {
+                    box.css("background", "#d1cccf");
+                }, 4000);
+            } else if (count == randomNumber)
+            {
+                box.css("background", "yellow");
+                box.css("background-image", "url('nemo.jpg')");
+                box.css("background", "url('nemo.jpg') no-repeat center center/cover");
+                playAgain.show();
+                $("#displayResult").html(`Congratulations! You found Nemo in ${noOfMove} moves.`);
+            } else
+            {
+                box.css("background", "red");
+                setTimeout(function ()
+                {
+                    box.css("background", "#d1cccf");
+                }, 4000);
+            }
+            if (noOfMove == maxTries && count != randomNumber)
+            {
+                playAgain.show();
+                $("#displayResult").html(`Sorry, you didn't find Nemo. The correct box was ${randomNumber}.`);
+            }
+        }
+    </script>
+</body>
+
+</html>
