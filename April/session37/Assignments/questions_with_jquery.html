@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Questions with JQuery</h1>
+    <div id="question-container">
+        <p id="question-number"></p>
+        <p id="question"></p>
+        <label>
+            <input type="radio" name="answer" value="option-1">
+            <span id="option-1"></span>
+        </label>
+        <label>
+            <input type="radio" name="answer" value="option-2">
+            <span id="option-2"></span>
+        </label>
+    </div>
+    <button id="previous-btn" disabled>Previous</button>
+    <button id="next-btn">Next</button>
+    <button id="finish-btn" style="display:none">Finish</button>
+
+    <div id="summary"></div>
+
+    <script src="jquery-3.6.4.js"></script>
+
+    <script>
+        $(document).ready(function ()
+        {
+            var questions = [
+                {
+                    question: "Is delhi capital of India?",
+                    options: ["yes", "no"],
+                    answer: "yes"
+                },
+                {
+                    question: "Is Hyderabad the capital Telangana?",
+                    options: ["yes", "no"],
+                    answer: "yes"
+                },
+                {
+                    question: "Does Sun rise in the west?",
+                    options: ["yes", "no"],
+                    answer: "no"
+                },
+                {
+                    question: "Do we have 7 days a week?",
+                    options: ["yes", "no"],
+                    answer: "yes"
+                },
+                {
+                    question: "Are you enjoying this quiz?",
+                    options: ["yes", "no"],
+                    answer: ""
+                }
+            ];
+
+            var currentQuestionIndex = 0;
+            var attemptedQuestions = 0;
+            var selectedAnswer = null;
+
+            var questionNumberEl = $("#question-number");
+            var questionEl = $("#question");
+            var option1El = $("#option-1");
+            var option2El = $("#option-2");
+            var answerEls = $("input[name='answer']");
+            var previousBtn = $("#previous-btn");
+            var nextBtn = $("#next-btn");
+            var finishBtn = $("#finish-btn");
+
+            setQuestionAndOptions();
+
+            previousBtn.click(goToPreviousQuestion);
+            nextBtn.click(goToNextQuestion);
+            finishBtn.click(showSummary);
+
+            function setQuestionAndOptions()
+            {
+                var currentQuestion = questions[currentQuestionIndex];
+                questionNumberEl.text(`Question ${currentQuestionIndex + 1}/${questions.length}`);
+                questionEl.text(currentQuestion.question);
+                option1El.text(currentQuestion.options[0]);
+                option2El.text(currentQuestion.options[1]);
+
+                // Check if an answer was previously selected for this question
+                if (selectedAnswer === "option-1")
+                {
+                    answerEls.eq(0).prop("checked", true);
+                } else if (selectedAnswer === "option-2")
+                {
+                    answerEls.eq(1).prop("checked", true);
+                } else
+                {
+                    answerEls.prop("checked", false);
+                }
+
+                if (currentQuestionIndex === 0)
+                {
+                    previousBtn.prop("disabled", true);
+                } else
+                {
+                    previousBtn.prop("disabled", false);
+                }
+                if (currentQuestionIndex === questions.length - 1)
+                {
+                    nextBtn.hide();
+                    finishBtn.show();
+                } else
+                {
+                    nextBtn.show();
+                    finishBtn.hide();
+                }
+            }
+
+            function goToPreviousQuestion()
+            {
+                // Store the currently selected answer
+                selectedAnswer = $("input[name='answer']:checked").val();
+
+                currentQuestionIndex--;
+                setQuestionAndOptions();
+            }
+            function goToNextQuestion()
+            {
+                var selectedAnswer = $("input[name='answer']:checked").val();
+                if (selectedAnswer)
+                {
+                    attemptedQuestions++;
+                    if (selectedAnswer === questions[currentQuestionIndex].answer)
+                    {
+                        questions[currentQuestionIndex].isCorrect = true;
+                    } else
+                    {
+                        questions[currentQuestionIndex].isCorrect = false;
+                    }
+                    currentQuestionIndex++;
+                    setQuestionAndOptions();
+                } else
+                {
+                    alert("Please select an answer.");
+                }
+            }
+            function showSummary()
+            {
+                var numCorrectAnswers = 0;
+                var numAttemptedQuestions = 0;
+                questions.forEach(function (question)
+                {
+                    if (question.answer === question.options[0])
+                    {
+                        numCorrectAnswers++;
+                    }
+                    if (question.isCorrect !== undefined)
+                    {
+                        numAttemptedQuestions++;
+                    }
+                });
+
+                var message = `You attempted ${numAttemptedQuestions} questions and got ${numCorrectAnswers} correct.`;
+                alert(message);
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Async Await 1</h1>
+    <script>
+        async function foo()
+        {
+            console.log("inside foo");
+            return 10;
+        }
+
+        function bar()
+        {
+            console.log("inside bar");
+            return new Promise((resolve, reject) => resolve(20));
+        }
+        foo().then(d => console.log("foo then", d));
+        bar().then(d => console.log("bar then", d));
+
+        async function main()
+        {
+            console.log("inside main");
+            var foo_result = await foo();
+            console.log("await foo",foo_result);
+            var bar_result = await bar();
+            console.log("await bar",bar_result);
+            console.log("end of main");
+        }
+        main();
+        console.log("end of script");
+    </script>
+</body>
+
+</html>

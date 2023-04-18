@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+</head>
+
+<body>
+    <h1>TODO with moment js</h1>
+    <label for="todo-input">Enter Todo:</label>
+    <input type="text" id="todo-input">
+    <button id="add-btn">Add</button>
+    <button id="display-btn">Display Todos</button>
+    <ul id="todo-list"></ul>
+
+    <script src="jquery-3.6.4.js"></script>
+
+    <script>
+        var todos = JSON.parse(localStorage.getItem('todos')) || [];
+        var todoInput = $('#todo-input');
+        var addBtn = $('#add-btn');
+        var displayBtn = $('#display-btn');
+        var todoList = $('#todo-list');
+
+        function saveTodos()
+        {
+            localStorage.setItem('todos', JSON.stringify(todos));
+        }
+
+        addBtn.click(function ()
+        {
+            var todo = todoInput.val();
+            var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+            todos.push({ todo: todo, time: time });
+            todoInput.val('');
+            saveTodos();
+        });
+
+        function deleteTodo(index)
+        {
+            var confirmation = confirm("Are you sure you want to delete the todo?");
+            if (confirmation)
+            {
+                todos.splice(index, 1);
+                saveTodos();
+                displayTodos();
+            }
+        }
+
+        function displayTodos()
+        {
+            var listItems = '';
+            $.each(todos, function (index, item)
+            {
+                listItems += '<li>' + item.todo + ' - Created on  ' + item.time + ' <button onclick="deleteTodo(' + index + ')">Delete</button></li>';
+            });
+            todoList.html(listItems);
+        }
+
+        displayBtn.click(function ()
+        {
+            displayTodos();
+        });
+
+        displayTodos();
+    </script>
+</body>
+
+</html>
