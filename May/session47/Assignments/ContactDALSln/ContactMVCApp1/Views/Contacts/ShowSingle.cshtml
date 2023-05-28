@@ -1,0 +1,24 @@
+﻿@model ContactDALLib.Model.Contact
+
+@{
+    ViewBag.Title = "Show Single Contact";
+}
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+<h2>Show Single Contact</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Mobile Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.Name</td>
+            <td>@Model.MobileNumber</td>
+        </tr>
+    </tbody>
+</table>

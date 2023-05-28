@@ -1,0 +1,23 @@
+﻿@model ContactDALLib.Model.Contact
+
+@{
+    ViewBag.Title = "Show Single Contact";
+}
+
+<h2>Show Single Contact</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Mobile Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.Name</td>
+            <td>@Model.MobileNumber</td>
+        </tr>
+    </tbody>
+</table>

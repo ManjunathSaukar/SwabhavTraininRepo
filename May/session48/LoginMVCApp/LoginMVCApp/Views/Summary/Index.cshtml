@@ -1,0 +1,10 @@
+﻿<p>
+    @Html.ActionLink("back to session", "Index", "Session")
+</p>
+
+<h1>Summary Page</h1>
+<h2>Last value of Session Counter is : @Session["counter"]</h2>
+<h2>Last value of Application Counter is : @(Context.Application["counter"])</h2>
+<p>
+    @Html.ActionLink("back to Application", "Index", "Application")
+</p>

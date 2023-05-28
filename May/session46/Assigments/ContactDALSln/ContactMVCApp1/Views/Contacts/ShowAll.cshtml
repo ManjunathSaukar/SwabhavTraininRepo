@@ -1,0 +1,30 @@
+﻿@model List<ContactDALLib.Model.Contact>
+
+@{
+    ViewBag.Title = "Show All Contacts";
+}
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+<h2>Show All Contacts</h2>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Mobile Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contact in Model)
+            {
+                <tr>
+                    <td>@contact.Id</td>
+                    <td>@contact.Name</td>
+                    <td>@contact.MobileNumber</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

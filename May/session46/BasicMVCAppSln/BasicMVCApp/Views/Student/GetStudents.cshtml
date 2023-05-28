@@ -1,0 +1,20 @@
+﻿@using BasicMVCApp.Models
+@model List<Student>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Cgpa</th>
+        </tr>
+    </thead>
+    @foreach(var student in Model)
+            {
+                <tr>
+                    <td>@student.Id</td>
+                    <td>@student.Name</td>
+                    <td>@student.Cgpa</td>
+                </tr>
+            }
+</table>

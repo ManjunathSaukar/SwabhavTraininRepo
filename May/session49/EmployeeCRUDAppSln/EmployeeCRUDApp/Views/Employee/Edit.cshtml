@@ -1,0 +1,24 @@
+﻿@using EmployeeCRUDApp.ViewModels
+@model EmployeeEditVM
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+
+<h1>@Model.Title</h1>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Id is : @Html.TextBoxFor(m => m.EmployeeId)
+    </p>
+    <p>
+        Name is : @Html.TextBoxFor(m => m.EmployeeName)
+    </p>
+    <p>
+        Slary is : @Html.TextBoxFor(m => m.EmployeeSalary)
+    </p>
+    <input type="submit" value="Save"/>
+    <div style="color:red">
+        @Html.ValidationSummary()
+
+    </div>
+}

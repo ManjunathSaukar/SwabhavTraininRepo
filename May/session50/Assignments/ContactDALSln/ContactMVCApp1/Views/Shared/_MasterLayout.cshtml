@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .btn-primary.no-hover {
+            background-color: #337ab7;
+            border-color: #337ab7;
+        }
+
+            .btn-primary.no-hover:focus,
+            .btn-primary.no-hover:hover {
+                background-color: #286090;
+                border-color: #286090;
+                color: #fff;
+            }
+
+            .btn-primary.no-hover span {
+                display: inline-block;
+                width: 100%;
+                text-align: center;
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                @* Modify the anchor tag below to create a redirect link *@
+                <a class="navbar-brand" href="@Url.Action("ShowAll", "Contacts")">Contacts CRUD App</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    @if (Session["userName"] == null)
+                    {
+                        <div class="navbar-form">
+                            <span>Guest</span>
+                            @Html.ActionLink("Login", "Index", "Login", null, new { @class = "btn btn-primary" })
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="navbar-form navbar-left">
+                            <p class="navbar-text">Welcome, @Session["userName"]</p>
+                            @Html.ActionLink("Logout", "Logout", "Contacts", null, new { @class = "btn btn-danger" })
+                        </div>
+                    }
+                </li>
+                <li>
+                    <div class="navbar-form">
+                        @Html.ActionLink("Add Contact", "AddContact", "Contacts", null, new { @class = "btn btn-primary no-hover" })
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

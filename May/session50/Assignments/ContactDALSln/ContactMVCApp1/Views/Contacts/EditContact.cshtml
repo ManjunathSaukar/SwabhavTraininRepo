@@ -1,0 +1,31 @@
+﻿@model ContactMVCApp1.VM.EditContactViewModel
+
+@{
+    ViewBag.Title = "Edit Contact";
+}
+
+<h2>Edit Contact</h2>
+
+
+<style>
+    .small-textbox {
+        width: 800px;
+    }
+</style>
+
+@using (Html.BeginForm("EditContact", "Contacts", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control small-textbox" })
+        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.MobileNumber, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.MobileNumber, new { @class = "form-control small-textbox" })
+        @Html.ValidationMessageFor(m => m.MobileNumber, "", new { @class = "text-danger" })
+    </div>
+    <input type="submit" value="Save Changes" class="btn btn-primary" />
+}

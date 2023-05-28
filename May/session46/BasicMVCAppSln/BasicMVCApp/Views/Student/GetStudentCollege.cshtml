@@ -1,0 +1,24 @@
+﻿@using BasicMVCApp.ViewModels
+@model GetStudentCollegeVM
+
+<h1>Display College Details</h1>
+
+<ul>
+    @foreach (var college in Model.Colleges)
+    {
+        <li>
+            @college.Name
+        </li>
+    }
+</ul>
+
+<h1>Display Student Details</h1>
+
+<ul>
+    @foreach (var student in Model.Students)
+    {
+        <li>
+            @student.Name
+        </li>
+    }
+</ul>

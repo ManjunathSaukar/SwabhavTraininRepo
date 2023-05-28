@@ -1,0 +1,39 @@
+﻿@using ContactMVCApp1.VM
+@model ContactMVCApp1.VM.LoginVM
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+<style>
+    .validation-summary-errors {
+        color: red;
+    }
+</style>
+
+<div class="container">
+    <h2 class="text-center">Welcome to Contacts CRUD App</h2>
+    <br />
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            @using (Html.BeginForm(actionName: "Index", controllerName: "Login", method: FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserPassword)
+                    @Html.PasswordFor(m => m.UserPassword, new { @class = "form-control" })
+                </div>
+                if (Model != null)
+                {
+                    <p style="color:red">@Model.Title</p>
+                }
+                <input type="submit" value="Login" class="btn btn-primary" />
+
+                <p>
+                    @Html.ValidationSummary();
+                </p>
+            }
+        </div>
+    </div>
+</div>
