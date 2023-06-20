@@ -1,0 +1,30 @@
+﻿@model EmployeeCoreCRUDApp.ViewModels.EmployeeAddVM
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<h1>@Model.Title</h1>
+
+<form asp-action="Add">
+    <div>
+        <label asp-for="EmployeeID">Employee ID:</label>
+        <input asp-for="EmployeeID" />
+        <span asp-validation-for="EmployeeID"></span>
+    </div>
+    <div>
+        <label asp-for="EmployeeName">Employee Name:</label>
+        <input asp-for="EmployeeName" />
+        <span asp-validation-for="EmployeeName"></span>
+    </div>
+    <div>
+        <label asp-for="EmployeeSalary">Employee Salary:</label>
+        <input asp-for="EmployeeSalary" />
+        <span asp-validation-for="EmployeeSalary"></span>
+    </div>
+    <div>
+        <input type="submit" value="Add" />
+    </div>
+</form>
+
+<a asp-action="Index">Back to List</a>

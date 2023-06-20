@@ -1,0 +1,55 @@
+﻿@using EmployeeCoreCRUDApp.ViewModel
+@model EmployeeDetailsVM
+@{
+    var userName = Context.User.Identity.Name;
+}
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<h1>Employee Details</h1>
+@if (userName == null)
+{
+    <span>Guest </span>
+    @Html.ActionLink("Login","Index","Login", null, new{@class = "btn btn-primary"})
+    
+}
+else
+{
+    <span>Welcome, @userName</span>
+    @Html.ActionLink("Logout", "LogOut", "Employee", null, new { @class = "btn btn-primary"})
+
+}
+<p>
+    <h3>Employee Count : @Model.EmployeeCount</h3>
+    <button><a asp-controller="Employee" asp-action="Add">Add Employee</a></button>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Salary</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+                @foreach (var emp in Model.Employees)
+                {
+                <tr>
+                    <td>@emp.Id</td>
+                    <td>@emp.Name</td>
+                    <td>@emp.Salary</td>
+                    <td>@Html.ActionLink("Edit", "Edit", new {id=emp.Id},new {@class="btn btn-info btn-xs"})</td>
+                    <td>@Html.ActionLink("X", "Delete", new {id=emp.Id}, new { @class = "btn btn-danger btn-xs" ,onclick="fnArYouSure()" })</td>
+                </tr>
+                }
+        </tbody>
+    </table>
+    <script>
+        function fnArYouSure() {
+            return confirm("Are You Sure, you want to delete this employee?")
+        }
+    </script>
+</p>

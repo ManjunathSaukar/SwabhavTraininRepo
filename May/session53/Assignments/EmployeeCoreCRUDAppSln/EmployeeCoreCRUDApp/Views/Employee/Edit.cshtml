@@ -1,0 +1,27 @@
+﻿@model EmployeeCoreCRUDApp.ViewModels.EmployeeEditVM
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<h1>@Model.Title</h1>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="EmployeeId" />
+
+    <div>
+        <label asp-for="EmployeeName">Employee Name:</label>
+        <input asp-for="EmployeeName" />
+        <span asp-validation-for="EmployeeName"></span>
+    </div>
+    <div>
+        <label asp-for="EmployeeSalary">Employee Salary:</label>
+        <input asp-for="EmployeeSalary" />
+        <span asp-validation-for="EmployeeSalary"></span>
+    </div>
+    <div>
+        <input type="submit" value="Save" />
+    </div>
+</form>
+
+<a asp-action="Index">Back to List</a>

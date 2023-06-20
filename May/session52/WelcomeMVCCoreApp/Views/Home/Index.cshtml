@@ -1,0 +1,9 @@
+﻿
+<a asp-controller="Home" asp-action="Browse">Take via tag helper</a>
+<br/>
+@Html.ActionLink("take me browse via html helper", "Browse")
+
+@for (int i = 1; i < 5; i++)
+{
+    <h1>@ViewBag.Message</h1>
+}

@@ -1,0 +1,20 @@
+﻿@model EmployeeCoreCRUDApp.ViewModels.LoginVM
+
+<h1>Login</h1>
+
+@using (Html.BeginForm("Index", "Login", FormMethod.Post))
+{
+    <div>
+        <label>Username:</label>
+        @Html.TextBoxFor(m => m.UserName)
+        @Html.ValidationMessageFor(m => m.UserName)
+    </div>
+    <div>
+        <label>Password:</label>
+        @Html.PasswordFor(m => m.UserPassword)
+        @Html.ValidationMessageFor(m => m.UserPassword)
+    </div>
+    <div>
+        <input type="submit" value="Login" />
+    </div>
+}
